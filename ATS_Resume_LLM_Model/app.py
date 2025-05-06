@@ -66,6 +66,8 @@ import shapely.geometry.multipoint
 import shapely.geometry.multilinestring
 import shapely.geometry.multipolygon
 
+'''	
+
 # Load environment variables
 load_dotenv()
 
@@ -124,4 +126,4 @@ def generate_summary(text):
     except Exception as e:
         logging.error(f"Error generating summary: {e}")
         return "Error generating summary."
-    
+'''
