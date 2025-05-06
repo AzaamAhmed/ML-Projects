@@ -66,3 +66,47 @@ import shapely.geometry.multipoint
 import shapely.geometry.multilinestring
 import shapely.geometry.multipolygon
 
+# Load environment variables
+load_dotenv()
+
+# Set OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Streamlit app title
+st.title("Resume and Job Description Matching")
+
+# Function to preprocess text
+def preprocess_text(text):
+    nltk.download('stopwords')
+    nltk.download('punkt')
+    nltk.download('wordnet')
+    stop_words = set(stopwords.words('english'))
+    lemmatizer = WordNetLemmatizer()
+    text = re.sub(r'\W', ' ', text)
+    text = re.sub(r'\s+', ' ', text)
+    text = text.lower()
+    tokens = word_tokenize(text)
+    tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
+    return ' '.join(tokens)
+
+# Function to calculate similarity score
+def calculate_similarity(resume, job_description):
+    vectorizer = TfidfVectorizer()
+    tfidf_matrix = vectorizer.fit_transform([resume, job_description])
+    similarity = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])
+    return similarity[0][0]
+
+# Streamlit input fields
+resume_text = st.text_area("Paste your Resume here:")
+job_description_text = st.text_area("Paste the Job Description here:")
+
+# Process and calculate similarity
+if st.button("Calculate Match Score"):
+    if resume_text and job_description_text:
+        processed_resume = preprocess_text(resume_text)
+        processed_job_description = preprocess_text(job_description_text)
+        match_score = calculate_similarity(processed_resume, processed_job_description)
+        st.write(f"Match Score: {match_score:.2f}")
+    else:
+        st.write("Please provide both Resume and Job Description.")
+        
