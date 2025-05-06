@@ -110,3 +110,18 @@ if st.button("Calculate Match Score"):
     else:
         st.write("Please provide both Resume and Job Description.")
         
+# Function to generate a summary using OpenAI API
+def generate_summary(text):
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": f"Summarize the following text: {text}"}
+            ]
+        )
+        summary = response['choices'][0]['message']['content']
+        return summary
+    except Exception as e:
+        logging.error(f"Error generating summary: {e}")
+        return "Error generating summary."
+    
