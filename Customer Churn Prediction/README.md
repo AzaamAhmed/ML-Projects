@@ -37,7 +37,7 @@ This repository presents a comprehensive end-to-end machine learning workflow fo
 Customer Churn Prediction/
 ├── Customer_Churn_Prediction.ipynb
 ├── data/
-│   └── customer_churn.csv
+│   └── WA_Fn-UseC_-Telco-Customer-Churn.csv
 ├── requirements.txt
 └── README.md
 ```
