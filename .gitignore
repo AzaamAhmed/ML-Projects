@@ -4,20 +4,51 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
 
 # Node
 node_modules/
 npm-debug.log*
 yarn-error.log*
+yarn.lock
+package-lock.json
 
 # Next.js
 .next/
 out/
+build/
 
 # Environment
 .env
 .env.local
+.env.*.local
 
 # OS
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# Testing
+coverage/
+.pytest_cache/
+htmlcov/
+
+# Misc
+*.bak
+*.tmp
+.cache/
