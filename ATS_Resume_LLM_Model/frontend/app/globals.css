@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #0F9D58;
+  --primary-light: #34A853;
+  --background: #E8F5E9;
+  --card: #FFFFFF;
+  --text-primary: #1F2937;
+  --text-muted: #6B7280;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+  min-height: 100vh;
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-card shadow-card p-6 transition-all duration-200 hover:shadow-card-hover;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-primary text-white px-6 py-2.5 rounded-button font-medium 
+           shadow-button transition-all duration-200 hover:opacity-90 hover:shadow-lg
+           active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-primary border-2 border-primary px-6 py-2.5 rounded-button 
+           font-medium transition-all duration-200 hover:bg-primary-50;
+  }
+  
+  .btn-ghost {
+    @apply text-text-muted px-4 py-2 rounded-button font-medium 
+           transition-all duration-200 hover:bg-gray-100;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-button text-text-primary
+           focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary
+           transition-all duration-200;
+  }
+  
+  .stat-card {
+    @apply bg-white rounded-card shadow-card p-5 border-l-4 transition-all duration-200 hover:shadow-card-hover;
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary 
+           transition-all duration-200 hover:bg-primary-50 hover:text-primary;
+  }
+  
+  .nav-item-active {
+    @apply bg-primary-50 text-primary font-medium;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply bg-amber-100 text-amber-800;
+  }
+  
+  .badge-error {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .progress-bar {
+    @apply h-2 rounded-full bg-gray-200 overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+  
+  .table-header {
+    @apply bg-gray-50 text-left text-sm font-semibold text-text-secondary px-4 py-3;
+  }
+  
+  .table-cell {
+    @apply px-4 py-4 text-sm text-text-primary border-b border-gray-100;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(15, 157, 88, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(15, 157, 88, 0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2s infinite;
+}
+
+/* Score colors */
+.score-excellent { @apply text-green-600; }
+.score-good { @apply text-blue-600; }
+.score-fair { @apply text-amber-600; }
+.score-poor { @apply text-red-600; }
